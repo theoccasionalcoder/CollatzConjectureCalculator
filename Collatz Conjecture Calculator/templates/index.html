@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collatz Calculator</title>
+    <!-- Link to the external styles.css file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Collatz Calculator</h1>
+        <p>Enter a positive integer to generate its Collatz sequence:</p>
+        
+        <form method="POST">
+            <input type="number" name="number" placeholder="Enter a number" required>
+            <button type="submit">Calculate</button>
+        </form>
+
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+        
+        {% if sequence %}
+        <div class="sequence">
+            <h2>Collatz Sequence:</h2>
+            <!-- Render the sequence using a loop -->
+            <ul>
+                {% for num in sequence %}
+                    <li>{{ num }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
